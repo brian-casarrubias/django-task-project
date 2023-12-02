@@ -1,0 +1,46 @@
+{% extends 'helloworld/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<!-- Your content goes here -->
+
+   
+
+        <div class="flex-container" style="height: 300px;">
+        
+                <img class="rounded-circle article-img" src="{{ object.user.profile.image.url }}" style="width: 100px; height: 100px;">
+                <div class="flex-item">
+                    <h1>{{ object.title }}</h1> 
+                    <p>{{ object.content }}</p>
+
+                    {% if not object.completed %}
+                    <p style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;margin-top: 10px; "> >Status:</p>
+                    <p style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; margin-top: 20px; color: red;">
+                        In progress
+                    </p>
+                       
+
+
+                       
+
+                    {% else %}
+                         <p style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;margin-top: 10px; "> >Status: </p>
+                         <p style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; margin-top: 20px; color: green; font-size: 20px;"> Completed</p>
+
+                    {% endif %}
+                    <a style="margin-left: 500px;" href="{% url 'task-update' task.id %}" >edit</a>
+                    <a style="margin-left: 50px;" href="{% url 'task-delete' task.id %}">delete</a>
+                    
+
+
+                            
+                        
+                </div>
+                        
+                    
+
+        </div>
+
+{% endblock content %}

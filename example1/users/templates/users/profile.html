@@ -1,0 +1,69 @@
+{% extends 'helloworld/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+   
+        
+        <div class="friend-box-container">
+            <div class="profile-image-container">
+                <img class="profile-image"src="{{ user.profile.image.url }}">
+            </div>
+        
+
+            
+            <div class="mutual-friends-container">
+                <p class="profile-name"> {{ user.username}} </p>
+                <p style="font-size: 15px; margin-bottom: 10px; margin-top: 10px;"> {{ user.email }}</p>
+                <p style="font-size: 15px;"class=""> {{ user.profile.bio }}</p>
+                
+                
+                
+            </div>
+
+            <div>
+
+        
+                
+            </div>
+
+            <div class="profile-update">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <fieldset >
+                            <legend > <!-- boot strap predefined classes, css-->
+                                Edit Profile
+                            </legend>
+
+                            
+                            <div >
+                                {{ u_form|crispy }}
+                                
+                            </div>
+                            {{ p_form|crispy }}
+                        </fieldset>
+
+                        <div >
+                            <button class="btn btn-outline-info" type="submit" style="margin-top: 30px; margin-left: 180px;"  >
+                                Update
+                            </button>
+                        </div>
+                </form>
+
+            </div>
+
+        </div>         
+
+
+
+
+
+    
+
+
+  
+    
+
+{% endblock %}      

@@ -1,0 +1,38 @@
+
+
+{% extends 'helloworld/base.html'%}
+
+
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+                {% csrf_token %}
+
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4"> <!-- boot strap predefined classes, css-->
+                        Are you sure You want to delete?
+                    </legend>
+                    <p>Title: {{ object.title }}</p>
+                    <p style="margin-bottom: 50px;" >Content: {{object.content}}</p>
+
+                   
+                </fieldset>
+
+                <div class="form-group">
+
+                    <button class="btn btn-outline-secondary">
+                        <a  href="{% url 'task_detail' task.id %}">
+                            Cancel
+                        </a>
+                    </button>
+
+                    <button class="btn btn-outline-danger" type="submit" >
+                        Delete
+                    </button>
+                </div>
+        </form>
+
+       
+
+    </div>
+{% endblock content %}
